@@ -85,6 +85,15 @@ const currencies = new Map([
   ['GBP', 'Pound sterling'],
 ]);
 
-currencies.forEach(function (value, key, map) {
+// currencies.forEach(function (value, key, map) {
+//   console.log(`${key}: ${value}`);
+// });
+
+const currenciesUnique = new Set(['USD', 'USD', 'GBP', 'GBP', 'EUR']);
+
+console.log(currenciesUnique);
+
+currenciesUnique.forEach(function (value, key, set) {
   console.log(`${key}: ${value}`);
+  console.log(set);
 });
