@@ -63,6 +63,12 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 //APPLICATION
 
+const displayMovements = function (movement) {
+  movement.forEach(function (value) {
+    console.log(value);
+  });
+};
+
 // LECTURES
 
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
