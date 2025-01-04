@@ -64,10 +64,26 @@ const inputClosePin = document.querySelector('.form__input--pin');
 //APPLICATION
 
 const displayMovements = function (movement) {
-  movement.forEach(function (value) {
-    console.log(value);
+  movement.forEach(function (mov, index) {
+    const type = mov > 0 ? 'deposit' : 'withdrawal';
+
+    const html = `
+
+<div class="movements__row">
+          <div class="movements__type movements__type--${type}">${index} ${type}</div>
+         
+          <div class="movements__value"> ${mov}   </div>
+        </div>
+
+
+
+
+
+`;
   });
 };
+
+displayMovements(account1.movements);
 
 // LECTURES
 
