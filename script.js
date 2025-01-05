@@ -88,7 +88,7 @@ displayMovements(account1.movements);
 
 // LECTURES
 
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // for (const movement of movements) {
 //   movement > 0
@@ -142,19 +142,27 @@ displayMovements(account1.movements);
 // § Data 1: Julia's data [3, 5, 2, 12, 7], Kate's data [4, 1, 15, 8, 3] § Data 2: Julia's data [9, 16, 6, 8, 3], Kate's data [10, 5, 6, 1, 4]
 // Hints: Use tools from all lectures in this section so far 😉
 
-const checkDogs = function (dogsJulia, dogsKate) {
-  const dogsJuliaCopy = [...dogsJulia];
-  dogsJuliaCopy.splice(-2);
-  dogsJuliaCopy.splice(0, 1);
+// const checkDogs = function (dogsJulia, dogsKate) {
+//   const dogsJuliaCopy = [...dogsJulia];
+//   dogsJuliaCopy.splice(-2);
+//   dogsJuliaCopy.splice(0, 1);
 
-  console.log(dogsJuliaCopy);
-  const arrayKateJulia = dogsJuliaCopy.concat(dogsKate);
+//   console.log(dogsJuliaCopy);
+//   const arrayKateJulia = dogsJuliaCopy.concat(dogsKate);
 
-  arrayKateJulia.forEach(function (age, index) {
-    const isAdult = age >= 3 ? 'is an adult' : 'is still a puppy';
+//   arrayKateJulia.forEach(function (age, index) {
+//     const isAdult = age >= 3 ? 'is an adult' : 'is still a puppy';
 
-    console.log(`Dognumber ${index + 1} ${isAdult}, and is ${age} years old`);
-  });
-};
+//     console.log(`Dognumber ${index + 1} ${isAdult}, and is ${age} years old`);
+//   });
+// };
 
-checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
+// checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
+
+// const newArray = movements.map(movement => movement * 2);
+
+const eurTousd = 1.1;
+
+movements.map(function (movement) {
+  return movement * eurTousd;
+});
