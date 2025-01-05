@@ -163,18 +163,24 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 const eurTousd = 1.1;
 
-// const movementsUSD = movements.map(function (movement) {
-//   return movement * eurTousd;
-// });
+const movementsUSD = movements.map(mov => mov * eurTousd);
+
+console.log(movementsUSD);
+
+// const movementsUSD = [];
+
+// for (const movement of movements) {
+//   console.log(movement);
+//   const conversionUSD = movement * eurTousd;
+//   movementsUSD.push(conversionUSD);
+// }
 
 // console.log(movementsUSD);
 
-const movementsUSD = [];
+const movementsDescription = movements.map(function (mov, i) {
+  return `Movement ${
+    i + 1
+  } : You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)}`;
+});
 
-for (const movement of movements) {
-  console.log(movement);
-  const conversionUSD = movement * eurTousd;
-  movementsUSD.push(conversionUSD);
-}
-
-console.log(movementsUSD);
+console.log(movementsDescription);
