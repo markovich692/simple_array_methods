@@ -163,6 +163,18 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 const eurTousd = 1.1;
 
-movements.map(function (movement) {
-  return movement * eurTousd;
-});
+// const movementsUSD = movements.map(function (movement) {
+//   return movement * eurTousd;
+// });
+
+// console.log(movementsUSD);
+
+const movementsUSD = [];
+
+for (const movement of movements) {
+  console.log(movement);
+  const conversionUSD = movement * eurTousd;
+  movementsUSD.push(conversionUSD);
+}
+
+console.log(movementsUSD);
