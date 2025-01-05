@@ -177,10 +177,11 @@ console.log(movementsUSD);
 
 // console.log(movementsUSD);
 
-const movementsDescription = movements.map(function (mov, i) {
-  return `Movement ${
-    i + 1
-  } : You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(mov)}`;
-});
+const movementsDescription = movements.map(
+  (mov, i) =>
+    `Movement ${i + 1} : You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(
+      mov
+    )}`
+);
 
 console.log(movementsDescription);
