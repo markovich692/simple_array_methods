@@ -134,7 +134,7 @@ displayMovements(account1.movements);
 // 1. Julia found out that the owners of the first and the last two dogs actually have cats, not dogs!
 // So create a shallow copy of Julia's array, and remove the cat ages from that copied array
 // (because it's a bad practice to mutate function parameters)
-// 2. Create anarray with both Julia's (corrected) and Kate's data
+// 2. Create an array with both Julia's (corrected) and Kate's data
 // 3. Foreachremainingdog,logtotheconsolewhetherit'sanadult("Dognumber1
 // is an adult, and is 5 years old") or a puppy ("Dog number 2 is still a puppy   ")
 // 4. Runthefunctionforbothtestdatasets
@@ -145,12 +145,10 @@ displayMovements(account1.movements);
 const checkDogs = function (dogsJulia, dogsKate) {
   const dogsJuliaCopy = [...dogsJulia];
   dogsJuliaCopy.splice(-2);
+
+  console.log(dogsJuliaCopy);
+  const arrayKateJulia = dogsJuliaCopy.concat(dogsKate);
+  console.log(arrayKateJulia);
 };
 
-// const arrayTest = ['a', 'b', 'c', 'd'];
-
-// const arrayTestCopy = [...arrayTest];
-
-// arrayTestCopy.splice(-2);
-// console.log(arrayTest);
-// console.log(arrayTestCopy);
+checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
