@@ -68,20 +68,19 @@ const displayMovements = function (movement) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
 
     const html = `
-
 <div class="movements__row">
-          <div class="movements__type movements__type--${type}">${index} ${type}</div>
-         
+          <div class="movements__type movements__type--${type}">${
+      index + 1
+    } ${type}</div>   
           <div class="movements__value"> ${mov}   </div>
         </div>
-
-
-
-
-
 `;
+
+    containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 };
+
+// containerMovements.insertAdjacentHTML(html);
 
 displayMovements(account1.movements);
 
