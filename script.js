@@ -64,6 +64,8 @@ const inputClosePin = document.querySelector('.form__input--pin');
 //APPLICATION
 
 const displayMovements = function (movement) {
+  containerMovements.innerHTML = '';
+
   movement.forEach(function (mov, index) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
 
