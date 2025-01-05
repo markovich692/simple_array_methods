@@ -135,7 +135,7 @@ displayMovements(account1.movements);
 // So create a shallow copy of Julia's array, and remove the cat ages from that copied array
 // (because it's a bad practice to mutate function parameters)
 // 2. Create an array with both Julia's (corrected) and Kate's data
-// 3. Foreachremainingdog,logtotheconsolewhetherit'sanadult("Dognumber1
+// 3. For each remaining dog,log to the console whether it's an adult ("Dognumber1
 // is an adult, and is 5 years old") or a puppy ("Dog number 2 is still a puppy   ")
 // 4. Runthefunctionforbothtestdatasets
 // Test data:
@@ -148,7 +148,12 @@ const checkDogs = function (dogsJulia, dogsKate) {
 
   console.log(dogsJuliaCopy);
   const arrayKateJulia = dogsJuliaCopy.concat(dogsKate);
-  console.log(arrayKateJulia);
+
+  arrayKateJulia.forEach(function (age, index) {
+    const isAdult = age >= 3 ? 'is an adult' : 'is still a puppy';
+
+    console.log(`Dognumber ${index + 1} ${isAdult}, and is ${age} years old`);
+  });
 };
 
 checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
