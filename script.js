@@ -84,16 +84,29 @@ const displayMovements = function (movement) {
 
 // containerMovements.insertAdjacentHTML(html);
 
-const createUsername = function (user) {
-  const username = user
-    .toLowerCase()
-    .split(' ')
-    .map(name => name[0])
-    .join('');
-  console.log(username);
+// const createUsernames = function (accounts) {
+//   // const { owner } = accounts;
+//   const username = user
+//     .toLowerCase()
+//     .split(' ')
+//     .map(name => name[0])
+//     .join('');
+//   return username;
+// };
+
+const createUsernames = function (accs) {
+  accs.forEach(function (acc) {
+    //Create a new property for each account
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  });
 };
 
-createUsername('Steven Thomas Williams');
+createUsernames(accounts);
+console.log(account3);
 
 // const userName = user.split(' ');
 // let initial = '';
