@@ -303,6 +303,14 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 const calcAverageHumanAge = function (ages) {
   const humanAges = ages.map(age => (age <= 2 ? 2 * age : 16 + age * 4));
+
+  console.log(humanAges);
+
+  const adultHumanAgeDog = humanAges.filter(function (humanAge) {
+    return humanAge >= 18;
+  });
+
+  return adultHumanAgeDog;
 };
 
 console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]));
