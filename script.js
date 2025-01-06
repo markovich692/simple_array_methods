@@ -85,14 +85,24 @@ const displayMovements = function (movement) {
 // containerMovements.insertAdjacentHTML(html);
 
 const user = 'Steven Thomas Williams';
-const userName = user.split(' ');
-let initial = '';
-userName.forEach(function (naming) {
-  initial += naming.toLowerCase().slice(0, 1);
-  console.log(initial);
-});
-console.log(initial);
-console.log(userName);
+
+const username = user.toLowerCase().split(' ');
+
+const initials = username.map(nom => nom.slice(0, 1));
+
+console.log(initials);
+
+const userInitials = initials.join('');
+console.log(userInitials);
+
+// const userName = user.split(' ');
+// let initial = '';
+// userName.forEach(function (naming) {
+//   initial += naming.toLowerCase().slice(0, 1);
+//   console.log(initial);
+// });
+// console.log(initial);
+// console.log(userName);
 
 displayMovements(account1.movements);
 
