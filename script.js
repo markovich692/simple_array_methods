@@ -119,7 +119,7 @@ const withdrawals = movements.filter(function (mov) {
   return mov < 0;
 });
 
-// console.log(withdrawals);
+//accumulator => SNOWBALL
 console.log(movements);
 const balance = movements.reduce(function (acc, cur, i, arr) {
   console.log(`Iteration ${i}: ${acc}`);
@@ -128,6 +128,13 @@ const balance = movements.reduce(function (acc, cur, i, arr) {
 }, 0);
 
 console.log(balance);
+////////////////////////////////
+let sum = 0;
+for (const mov of movements) {
+  sum += mov;
+}
+
+console.log(sum);
 
 // for (const movement of movements) {
 //   movement > 0
