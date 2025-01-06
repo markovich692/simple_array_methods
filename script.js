@@ -81,16 +81,25 @@ const inputClosePin = document.querySelector('.form__input--pin');
 //     containerMovements.insertAdjacentHTML('afterbegin', html);
 //   });
 // };
-/////////////////////////
 
-const displayMovements = function (movement) {
-  containerMovements.innerHTML = '';
+//DISPLAY BALANCE
 
-  const balance = movement.reduce(function (acc, cur) {
+const calcDisplayBalance = function (movements) {
+  labelBalance.textContent = '';
+
+  //Calculate the balance
+  const balance = movements.reduce(function (acc, cur) {
     return acc + cur;
   }, 0);
 
-  console.log(balance);
+  labelBalance.textContent = `${balance}€`;
+};
+
+calcDisplayBalance(account1.movements);
+
+//DISPLAY MOVEMENTS
+const displayMovements = function (movement) {
+  containerMovements.innerHTML = '';
 
   movement.forEach(function (mov, index) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
@@ -108,6 +117,9 @@ const displayMovements = function (movement) {
   });
 };
 
+displayMovements(account1.movements);
+
+//CREATE USERNAME PROPERTY
 const createUsernames = function (accs) {
   accs.forEach(function (acc) {
     //Create a new property for each account
@@ -130,8 +142,6 @@ createUsernames(accounts);
 // });
 // console.log(initial);
 // console.log(userName);
-
-displayMovements(account1.movements);
 
 // LECTURES
 
