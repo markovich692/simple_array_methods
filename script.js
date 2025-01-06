@@ -62,9 +62,35 @@ const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
 //APPLICATION
+/////////////////////////////
+// const displayMovements = function (movement) {
+//   containerMovements.innerHTML = '';
+
+//   movement.forEach(function (mov, index) {
+//     const type = mov > 0 ? 'deposit' : 'withdrawal';
+
+//     const html = `
+// <div class="movements__row">
+//           <div class="movements__type movements__type--${type}">${
+//       index + 1
+//     } ${type}</div>
+//           <div class="movements__value"> ${mov}   </div>
+//         </div>
+// `;
+
+//     containerMovements.insertAdjacentHTML('afterbegin', html);
+//   });
+// };
+/////////////////////////
 
 const displayMovements = function (movement) {
   containerMovements.innerHTML = '';
+
+  const balance = movement.reduce(function (acc, cur) {
+    return acc + cur;
+  }, 0);
+
+  console.log(balance);
 
   movement.forEach(function (mov, index) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
@@ -111,30 +137,31 @@ displayMovements(account1.movements);
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-const deposits = movements.filter(function (mov) {
-  return mov > 0;
-});
+// const deposits = movements.filter(function (mov) {
+//   return mov > 0;
+// });
 
-const withdrawals = movements.filter(function (mov) {
-  return mov < 0;
-});
+// const withdrawals = movements.filter(function (mov) {
+//   return mov < 0;
+// });
 
 //accumulator => SNOWBALL
-console.log(movements);
-const balance = movements.reduce(function (acc, cur, i, arr) {
-  console.log(`Iteration ${i}: ${acc}`);
+// console.log(movements);
+// //USING the reduce method to calculate the current balance
+// const balance = movements.reduce(function (acc, cur, i, arr) {
+//   console.log(`Iteration ${i}: ${acc}`);
 
-  return acc + cur;
-}, 0);
+//   return acc + cur;
+// }, 0);
 
-console.log(balance);
-////////////////////////////////
-let sum = 0;
-for (const mov of movements) {
-  sum += mov;
-}
+// console.log(balance);
+//USING the for...of loop to calculate the current balance
+// let sum = 0;
+// for (const mov of movements) {
+//   sum += mov;
+// }
 
-console.log(sum);
+// console.log(sum);
 
 // for (const movement of movements) {
 //   movement > 0
