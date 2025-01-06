@@ -87,10 +87,8 @@ const inputClosePin = document.querySelector('.form__input--pin');
 const calcDisplayBalance = function (movements) {
   labelBalance.textContent = '';
 
-  //Calculate the balance
-  const balance = movements.reduce(function (acc, cur) {
-    return acc + cur;
-  }, 0);
+  //calculate the balance
+  const balance = movements.reduce((acc, cur) => acc + cur, 0);
 
   labelBalance.textContent = `${balance}€`;
 };
@@ -146,6 +144,15 @@ createUsernames(accounts);
 // LECTURES
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+//Maximum value
+
+const max = movements.reduce(
+  (acc, mov) => (acc > mov ? acc : mov),
+  movements[0]
+);
+
+console.log(max);
 
 // const deposits = movements.filter(function (mov) {
 //   return mov > 0;
