@@ -147,12 +147,12 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 //Maximum value
 
-const max = movements.reduce(
-  (acc, mov) => (acc > mov ? acc : mov),
-  movements[0]
-);
+// const max = movements.reduce(
+//   (acc, mov) => (acc > mov ? acc : mov),
+//   movements[0]
+// );
 
-console.log(max);
+// console.log(max);
 
 // const deposits = movements.filter(function (mov) {
 //   return mov > 0;
