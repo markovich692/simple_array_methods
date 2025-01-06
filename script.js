@@ -82,18 +82,6 @@ const displayMovements = function (movement) {
   });
 };
 
-// containerMovements.insertAdjacentHTML(html);
-
-// const createUsernames = function (accounts) {
-//   // const { owner } = accounts;
-//   const username = user
-//     .toLowerCase()
-//     .split(' ')
-//     .map(name => name[0])
-//     .join('');
-//   return username;
-// };
-
 const createUsernames = function (accs) {
   accs.forEach(function (acc) {
     //Create a new property for each account
@@ -105,8 +93,8 @@ const createUsernames = function (accs) {
   });
 };
 
+//adds the username property to each of the account
 createUsernames(accounts);
-console.log(account3);
 
 // const userName = user.split(' ');
 // let initial = '';
@@ -131,7 +119,13 @@ const withdrawals = movements.filter(function (mov) {
   return mov < 0;
 });
 
-console.log(withdrawals);
+// console.log(withdrawals);
+console.log(movements);
+const balance = movements.reduce(function (acc, cur, i, arr) {
+  return acc + cur;
+});
+
+console.log(balance);
 
 // for (const movement of movements) {
 //   movement > 0
