@@ -84,6 +84,16 @@ const displayMovements = function (movement) {
 
 // containerMovements.insertAdjacentHTML(html);
 
+const user = 'Steven Thomas Williams';
+const userName = user.split(' ');
+let initial = '';
+userName.forEach(function (naming) {
+  initial += naming.toLowerCase().slice(0, 1);
+  console.log(initial);
+});
+console.log(initial);
+console.log(userName);
+
 displayMovements(account1.movements);
 
 // LECTURES
@@ -161,11 +171,11 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // const newArray = movements.map(movement => movement * 2);
 
-const eurTousd = 1.1;
+// const eurTousd = 1.1;
 
-const movementsUSD = movements.map(mov => mov * eurTousd);
+// const movementsUSD = movements.map(mov => mov * eurTousd);
 
-console.log(movementsUSD);
+// console.log(movementsUSD);
 
 // const movementsUSD = [];
 
@@ -177,11 +187,19 @@ console.log(movementsUSD);
 
 // console.log(movementsUSD);
 
-const movementsDescription = movements.map(
-  (mov, i) =>
-    `Movement ${i + 1} : You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(
-      mov
-    )}`
-);
+//.forEach() method
+// movements.forEach(function (movement, index) {
+//   movement > 0
+//     ? console.log(`Movement ${index + 1}: You deposited ${movement}`)
+//     : console.log(`Movement ${index + 1}: You withdrew ${Math.abs(movement)}`);
+// });
 
-console.log(movementsDescription);
+// //.map() method
+// const movementsDescription = movements.map(
+//   (mov, i) =>
+//     `Movement ${i + 1} : You ${mov > 0 ? 'deposited' : 'withdrew'} ${Math.abs(
+//       mov
+//     )}`
+// );
+
+// console.log(movementsDescription);
