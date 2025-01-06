@@ -302,13 +302,12 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // § Data1:[5,2,4,1,15,8,3] § Data2:[16,6,10,5,6,1,4]
 
 const calcAverageHumanAge = function (ages) {
+  //Calculate human ages
   const humanAges = ages.map(age => (age <= 2 ? 2 * age : 16 + age * 4));
 
-  console.log(humanAges);
+  //Removes dogs that are not 18 years of age
 
-  const adultHumanAgeDog = humanAges.filter(function (humanAge) {
-    return humanAge >= 18;
-  });
+  const adultHumanAgeDog = humanAges.filter(humanAge => humanAge >= 18);
 
   return adultHumanAgeDog;
 };
