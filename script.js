@@ -177,7 +177,10 @@ createUsernames(accounts);
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-const eurTousd = 1.1;
+const findAccount = accounts.find(account => account.username === 'js');
+console.log(findAccount);
+
+// const eurTousd = 1.1;
 //PIPELINE
 // const totalDepositsUSD = movements
 //   .filter(mov => mov > 0)
@@ -367,10 +370,10 @@ const eurTousd = 1.1;
 // Rewrite the 'calcAverageHumanAge' function from Challenge #2,
 // but this time as an arrow function, and using chaining!
 
-const calcAverageHumanAge1 = ages =>
-  ages
-    .map(age => (age <= 2 ? age * 2 : 16 + age * 4))
-    .filter(age => age >= 18)
-    .reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
+// const calcAverageHumanAge1 = ages =>
+//   ages
+//     .map(age => (age <= 2 ? age * 2 : 16 + age * 4))
+//     .filter(age => age >= 18)
+//     .reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
-console.log(calcAverageHumanAge1([5, 2, 4, 1, 15, 8, 3]));
+// console.log(calcAverageHumanAge1([5, 2, 4, 1, 15, 8, 3]));
