@@ -82,6 +82,30 @@ const inputClosePin = document.querySelector('.form__input--pin');
 //   });
 // };
 
+//DISPLAY MOVEMENTS
+const displayMovements = function (movement) {
+  containerMovements.innerHTML = '';
+
+  movement.forEach(function (mov, index) {
+    const type = mov > 0 ? 'deposit' : 'withdrawal';
+
+    //creates HTML strings
+    const html = `
+<div class="movements__row">
+          <div class="movements__type movements__type--${type}">${
+      index + 1
+    } ${type}</div>   
+          <div class="movements__value"> ${mov}€   </div>
+        </div>
+`;
+
+    //Inserts HTML strings
+    containerMovements.insertAdjacentHTML('afterbegin', html);
+  });
+};
+
+displayMovements(account1.movements);
+
 //DISPLAY BALANCE
 
 const calcDisplayBalance = function (movements) {
@@ -95,27 +119,27 @@ const calcDisplayBalance = function (movements) {
 
 calcDisplayBalance(account1.movements);
 
-//DISPLAY MOVEMENTS
-const displayMovements = function (movement) {
-  containerMovements.innerHTML = '';
+//DISPLAY SUMMARY
 
-  movement.forEach(function (mov, index) {
-    const type = mov > 0 ? 'deposit' : 'withdrawal';
+const calcDisplaySummary = function (movements) {
+  const eurTousd = 1.1;
+  //Total in
+  const totalIn = movements
+    .filter(mov => mov > 0)
+    .reduce((acc, cur) => acc + cur);
 
-    const html = `
-<div class="movements__row">
-          <div class="movements__type movements__type--${type}">${
-      index + 1
-    } ${type}</div>   
-          <div class="movements__value"> ${mov}   </div>
-        </div>
-`;
+  labelSumIn.textContent = `${totalIn}€`;
 
-    containerMovements.insertAdjacentHTML('afterbegin', html);
-  });
+  //Total out
+  const totalOut = movements
+    .filter(mov => mov < 0)
+    .reduce((acc, cur) => acc + cur);
+  labelSumOut.textContent = `${totalOut}€`;
+
+  //Total interest
 };
 
-displayMovements(account1.movements);
+calcDisplaySummary(account1.movements);
 
 //CREATE USERNAME PROPERTY
 const createUsernames = function (accs) {
@@ -147,12 +171,12 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 const eurTousd = 1.1;
 //PIPELINE
-const totalDepositsUSD = movements
-  .filter(mov => mov > 0)
-  .map(mov => mov * eurTousd)
-  .reduce((acc, cur) => acc + cur, 0);
+// const totalDepositsUSD = movements
+//   .filter(mov => mov > 0)
+//   .map(mov => mov * eurTousd)
+//   .reduce((acc, cur) => acc + cur, 0);
 
-console.log(totalDepositsUSD);
+// console.log(totalDepositsUSD);
 
 //Maximum value
 
