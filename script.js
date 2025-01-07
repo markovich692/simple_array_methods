@@ -312,9 +312,11 @@ const calcAverageHumanAge = function (ages) {
   //Calculate the average human age of all adult dogs
 
   const averageHumanAge =
-    adultHumanAgeDog.reduce((acc, cur) => acc + cur, 0) / ages.length;
+    adultHumanAgeDog.reduce((acc, cur) => acc + cur, 0) /
+    adultHumanAgeDog.length;
 
   return averageHumanAge;
 };
 
 console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]));
+console.log(calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]));
