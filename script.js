@@ -84,6 +84,8 @@ const inputClosePin = document.querySelector('.form__input--pin');
 // };
 //LOGIN
 
+containerApp.style.opacity = 0;
+
 //DISPLAY MOVEMENTS
 const displayMovements = function (movement) {
   containerMovements.innerHTML = '';
