@@ -124,19 +124,24 @@ calcDisplayBalance(account1.movements);
 const calcDisplaySummary = function (movements) {
   const eurTousd = 1.1;
   //Total in
-  const totalIn = movements
+  const incomes = movements
     .filter(mov => mov > 0)
-    .reduce((acc, cur) => acc + cur);
+    .reduce((acc, mov) => acc + mov);
 
-  labelSumIn.textContent = `${totalIn}€`;
+  labelSumIn.textContent = `${incomes}€`;
 
   //Total out
-  const totalOut = movements
-    .filter(mov => mov < 0)
-    .reduce((acc, cur) => acc + cur);
-  labelSumOut.textContent = `${totalOut}€`;
+  const out = movements.filter(mov => mov < 0).reduce((acc, mov) => acc + mov);
+  labelSumOut.textContent = `${Math.abs(out)}€`;
 
   //Total interest
+
+  const interestTotal = movements
+    .filter(mov => mov > 0)
+    .map(deposit => (deposit * 1.2) / 100)
+    .reduce((acc, int) => acc + int);
+
+  labelSumInterest.textContent = `${interestTotal}€`;
 };
 
 calcDisplaySummary(account1.movements);
