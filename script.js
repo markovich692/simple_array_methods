@@ -126,22 +126,25 @@ const calcDisplaySummary = function (movements) {
   //Total in
   const incomes = movements
     .filter(mov => mov > 0)
-    .reduce((acc, mov) => acc + mov);
+    .reduce((acc, mov) => acc + mov, 0);
 
   labelSumIn.textContent = `${incomes}€`;
 
   //Total out
-  const out = movements.filter(mov => mov < 0).reduce((acc, mov) => acc + mov);
+  const out = movements
+    .filter(mov => mov < 0)
+    .reduce((acc, mov) => acc + mov, 0);
   labelSumOut.textContent = `${Math.abs(out)}€`;
 
   //Total interest
 
-  const interestTotal = movements
+  const interest = movements
     .filter(mov => mov > 0)
     .map(deposit => (deposit * 1.2) / 100)
-    .reduce((acc, int) => acc + int);
+    .filter(int => int >= 1)
+    .reduce((acc, int) => acc + int, 0);
 
-  labelSumInterest.textContent = `${interestTotal}€`;
+  labelSumInterest.textContent = `${interest}€`;
 };
 
 calcDisplaySummary(account1.movements);
