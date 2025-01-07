@@ -55,6 +55,7 @@ const btnSort = document.querySelector('.btn--sort');
 
 const inputLoginUsername = document.querySelector('.login__input--user');
 const inputLoginPin = document.querySelector('.login__input--pin');
+
 const inputTransferTo = document.querySelector('.form__input--to');
 const inputTransferAmount = document.querySelector('.form__input--amount');
 const inputLoanAmount = document.querySelector('.form__input--loan-amount');
@@ -81,6 +82,7 @@ const inputClosePin = document.querySelector('.form__input--pin');
 //     containerMovements.insertAdjacentHTML('afterbegin', html);
 //   });
 // };
+//LOGIN
 
 //DISPLAY MOVEMENTS
 const displayMovements = function (movement) {
@@ -177,8 +179,21 @@ createUsernames(accounts);
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-const findAccount = accounts.find(account => account.username === 'js');
-console.log(findAccount);
+// const findAccount = accounts.find(account => account.username === 'js');
+// console.log(findAccount);
+
+// for (const acc of accounts) {
+//   // console.log(acc);
+//   if (acc.owner === 'Steven Thomas Williams') {
+//     console.log(acc);
+//   }
+// }
+
+// accounts.forEach(function (mov, index, array) {
+//   if (mov.owner === 'Steven Thomas Williams') {
+//     console.log(mov);
+//   }
+// });
 
 // const eurTousd = 1.1;
 //PIPELINE
