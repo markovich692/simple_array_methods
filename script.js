@@ -366,3 +366,14 @@ const eurTousd = 1.1;
 //CODING CHALLENGE 3
 // Rewrite the 'calcAverageHumanAge' function from Challenge #2,
 // but this time as an arrow function, and using chaining!
+
+const calcAverageHumanAge1 = function (ages) {
+  const averageHumanAge = ages
+    .map(age => (age <= 2 ? age * 2 : 16 + age * 4))
+    .filter(age => age >= 18)
+    .reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
+
+  return averageHumanAge;
+};
+
+console.log(calcAverageHumanAge1([5, 2, 4, 1, 15, 8, 3]));
