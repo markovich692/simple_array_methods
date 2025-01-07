@@ -145,6 +145,15 @@ createUsernames(accounts);
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
+const eurTousd = 1.1;
+//PIPELINE
+const totalDepositsUSD = movements
+  .filter(mov => mov > 0)
+  .map(mov => mov * eurTousd)
+  .reduce((acc, cur) => acc + cur, 0);
+
+console.log(totalDepositsUSD);
+
 //Maximum value
 
 // const max = movements.reduce(
@@ -301,23 +310,23 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // Test data:
 // § Data1:[5,2,4,1,15,8,3] § Data2:[16,6,10,5,6,1,4]
 
-const calcAverageHumanAge = function (ages) {
-  //Calculate human ages
-  const humanAges = ages.map(age => (age <= 2 ? 2 * age : 16 + age * 4));
+// const calcAverageHumanAge = function (ages) {
+//   //Calculate human ages
+//   const humanAges = ages.map(age => (age <= 2 ? 2 * age : 16 + age * 4));
 
-  //Removes dogs that are not 18 years of age
+//   //Removes dogs that are not 18 years of age
 
-  const adultHumanAgeDog = humanAges.filter(humanAge => humanAge >= 18);
+//   const adultHumanAgeDog = humanAges.filter(humanAge => humanAge >= 18);
 
-  //Calculate the average human age of all adult dogs
+//   //Calculate the average human age of all adult dogs
 
-  const averageHumanAge = adultHumanAgeDog.reduce(
-    (acc, cur, i, arr) => acc + cur / arr.length,
-    0
-  );
+//   const averageHumanAge = adultHumanAgeDog.reduce(
+//     (acc, cur, i, arr) => acc + cur / arr.length,
+//     0
+//   );
 
-  return averageHumanAge;
-};
+//   return averageHumanAge;
+// };
 
-console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]));
-console.log(calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]));
+// console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]));
+// console.log(calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]));
