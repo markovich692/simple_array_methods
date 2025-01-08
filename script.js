@@ -221,6 +221,9 @@ btnTransfer.addEventListener('click', function (event) {
   //Adds the value to the receiver movements array
   console.log(currentAccount.balance);
 
+  inputTransferAmount.value = '';
+  inputTransferTo.value = '';
+
   //Transfer conditions
   if (
     amount > 0 &&
@@ -249,6 +252,12 @@ btnTransfer.addEventListener('click', function (event) {
 // LECTURES
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+btnClose.addEventListener('click', function (event) {
+  event.preventDefault();
+
+  console.log('deleted');
+});
 
 // const findAccount = accounts.find(account => account.username === 'js');
 // console.log(findAccount);
