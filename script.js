@@ -94,6 +94,13 @@ btnLogin.addEventListener('click', function (event) {
   currentAccount = accounts.find(
     acc => acc.username === inputLoginUsername.value
   );
+
+  // console.log(currentAccount);
+
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    //Display Welcome message
+    labelWelcome.textContent = `Welcome, ${currentAccount.owner.split(' ')[0]}`;
+  }
 });
 
 //DISPLAY MOVEMENTS
@@ -414,6 +421,7 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // containerApp.style.opacity = 0;
 
 //CREATES THE LOGIN BEHAVIOR
+
 // btnLogin.addEventListener('click', function (event) {
 //   // console.log(event);
 //   event.preventDefault();
