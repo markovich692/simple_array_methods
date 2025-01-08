@@ -99,7 +99,9 @@ btnLogin.addEventListener('click', function (event) {
 
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
     //Display Welcome message
-    labelWelcome.textContent = `Welcome, ${currentAccount.owner.split(' ')[0]}`;
+    labelWelcome.textContent = `Welcome back, ${
+      currentAccount.owner.split(' ')[0]
+    }`;
   }
 });
 
