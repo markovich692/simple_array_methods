@@ -82,92 +82,114 @@ const inputClosePin = document.querySelector('.form__input--pin');
 //     containerMovements.insertAdjacentHTML('afterbegin', html);
 //   });
 // };
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
 //LOGIN
+// let isActive = true;
 
-containerApp.style.opacity = 0;
+// if (isActive) {
+//   containerApp.style.opacity = 0;
+// } else {
+//   containerApp.style.opacity = 1;
+// }
 
-//DISPLAY MOVEMENTS
-const displayMovements = function (movement) {
-  containerMovements.innerHTML = '';
+// btnLogin.addEventListener('click', function () {
+//   const retrieveAccount = accounts.find(
+//     acc => acc.username === inputLoginUsername.value
+//   );
 
-  movement.forEach(function (mov, index) {
-    const type = mov > 0 ? 'deposit' : 'withdrawal';
+//   console.log(retrieveAccount);
 
-    //creates HTML strings
-    const html = `
-<div class="movements__row">
-          <div class="movements__type movements__type--${type}">${
-      index + 1
-    } ${type}</div>   
-          <div class="movements__value"> ${mov}€   </div>
-        </div>
-`;
+//   if (retrieveAccount && retrieveAccount.pin === inputLoginPin.value) {
+//     isActive = 1;
+//   }
+// });
 
-    //Inserts HTML strings
-    containerMovements.insertAdjacentHTML('afterbegin', html);
-  });
-};
+// //DISPLAY MOVEMENTS
+// const displayMovements = function (movement) {
+//   containerMovements.innerHTML = '';
 
-displayMovements(account1.movements);
+//   movement.forEach(function (mov, index) {
+//     const type = mov > 0 ? 'deposit' : 'withdrawal';
 
-//DISPLAY BALANCE
+//     //creates HTML strings
+//     const html = `
+// <div class="movements__row">
+//           <div class="movements__type movements__type--${type}">${
+//       index + 1
+//     } ${type}</div>
+//           <div class="movements__value"> ${mov}€   </div>
+//         </div>
+// `;
 
-const calcDisplayBalance = function (movements) {
-  labelBalance.textContent = '';
+//     //Inserts HTML strings
+//     containerMovements.insertAdjacentHTML('afterbegin', html);
+//   });
+// };
 
-  //calculate the balance
-  const balance = movements.reduce((acc, cur) => acc + cur, 0);
+// displayMovements(account1.movements);
 
-  labelBalance.textContent = `${balance}€`;
-};
+// //DISPLAY BALANCE
 
-calcDisplayBalance(account1.movements);
+// const calcDisplayBalance = function (movements) {
+//   labelBalance.textContent = '';
 
-//DISPLAY SUMMARY
+//   //calculate the balance
+//   const balance = movements.reduce((acc, cur) => acc + cur, 0);
 
-const calcDisplaySummary = function (movements) {
-  const eurTousd = 1.1;
-  //Total in
-  const incomes = movements
-    .filter(mov => mov > 0)
-    .reduce((acc, mov) => acc + mov, 0);
+//   labelBalance.textContent = `${balance}€`;
+// };
 
-  labelSumIn.textContent = `${incomes}€`;
+// calcDisplayBalance(account1.movements);
 
-  //Total out
-  const out = movements
-    .filter(mov => mov < 0)
-    .reduce((acc, mov) => acc + mov, 0);
-  labelSumOut.textContent = `${Math.abs(out)}€`;
+// //DISPLAY SUMMARY
 
-  //Total interest
+// const calcDisplaySummary = function (movements) {
+//   const eurTousd = 1.1;
+//   //Total in
+//   const incomes = movements
+//     .filter(mov => mov > 0)
+//     .reduce((acc, mov) => acc + mov, 0);
 
-  const interest = movements
-    .filter(mov => mov > 0)
-    .map(deposit => (deposit * 1.2) / 100)
-    .filter(int => int >= 1)
-    .reduce((acc, int) => acc + int, 0);
+//   labelSumIn.textContent = `${incomes}€`;
 
-  labelSumInterest.textContent = `${interest}€`;
-};
+//   //Total out
+//   const out = movements
+//     .filter(mov => mov < 0)
+//     .reduce((acc, mov) => acc + mov, 0);
+//   labelSumOut.textContent = `${Math.abs(out)}€`;
 
-calcDisplaySummary(account1.movements);
+//   //Total interest
 
-//CREATE USERNAME PROPERTY
-const createUsernames = function (accs) {
-  accs.forEach(function (acc) {
-    //Create a new property for each account
-    acc.username = acc.owner
-      .toLowerCase()
-      .split(' ')
-      .map(name => name[0])
-      .join('');
-  });
-};
+//   const interest = movements
+//     .filter(mov => mov > 0)
+//     .map(deposit => (deposit * 1.2) / 100)
+//     .filter(int => int >= 1)
+//     .reduce((acc, int) => acc + int, 0);
 
-//adds the username property to each of the account
-createUsernames(accounts);
+//   labelSumInterest.textContent = `${interest}€`;
+// };
 
+// calcDisplaySummary(account1.movements);
+
+// //CREATE USERNAME PROPERTY
+// const createUsernames = function (accs) {
+//   accs.forEach(function (acc) {
+//     //Create a new property for each account
+//     acc.username = acc.owner
+//       .toLowerCase()
+//       .split(' ')
+//       .map(name => name[0])
+//       .join('');
+//   });
+// };
+
+// //adds the username property to each of the account
+// createUsernames(accounts);
+
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+//PROPERTY
 // const userName = user.split(' ');
 // let initial = '';
 // userName.forEach(function (naming) {
@@ -394,3 +416,118 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 //     .reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
 // console.log(calcAverageHumanAge1([5, 2, 4, 1, 15, 8, 3]));
+
+//LOGIN
+// let isActive = false;
+
+containerApp.style.opacity = 0;
+
+btnLogin.addEventListener('click', function (event) {
+  event.preventDefault();
+
+  const retrieveAccount = accounts.find(
+    acc => acc.username === inputLoginUsername.value
+  );
+
+  if (
+    Boolean(retrieveAccount) &&
+    retrieveAccount.pin === Number(inputLoginPin.value)
+  ) {
+    //Removes credentials
+
+    inputLoginUsername.value = '';
+    inputLoginPin.value = '';
+
+    //Display Name
+
+    labelWelcome.textContent = `Welcome, ${
+      retrieveAccount.owner.split(' ')[0]
+    }`;
+
+    //Display movements
+
+    console.log('Logged In');
+    const displayMovements = function (movement) {
+      containerMovements.innerHTML = '';
+
+      movement.forEach(function (mov, index) {
+        const type = mov > 0 ? 'deposit' : 'withdrawal';
+
+        //creates HTML strings
+        const html = `
+  <div class="movements__row">
+            <div class="movements__type movements__type--${type}">${
+          index + 1
+        } ${type}</div>   
+            <div class="movements__value"> ${mov}€   </div>
+          </div>
+  `;
+        //Inserts HTML strings
+        containerMovements.insertAdjacentHTML('afterbegin', html);
+      });
+    };
+
+    displayMovements(retrieveAccount.movements);
+  }
+
+  //DISPLAY BALANCE
+
+  const calcDisplayBalance = function (movements) {
+    labelBalance.textContent = '';
+
+    //calculate the balance
+    const balance = movements.reduce((acc, cur) => acc + cur, 0);
+
+    labelBalance.textContent = `${balance}€`;
+  };
+
+  calcDisplayBalance(retrieveAccount.movements);
+
+  //DISPLAY SUMMARY
+
+  const calcDisplaySummary = function (movements) {
+    const eurTousd = 1.1;
+
+    //Total in
+    const incomes = movements
+      .filter(mov => mov > 0)
+      .reduce((acc, mov) => acc + mov, 0);
+
+    labelSumIn.textContent = `${incomes}€`;
+
+    //Total out
+    const out = movements
+      .filter(mov => mov < 0)
+      .reduce((acc, mov) => acc + mov, 0);
+    labelSumOut.textContent = `${Math.abs(out)}€`;
+
+    //Total interest
+
+    const interest = movements
+      .filter(mov => mov > 0)
+      .map(deposit => (deposit * 1.2) / 100)
+      .filter(int => int >= 1)
+      .reduce((acc, int) => acc + int, 0);
+
+    labelSumInterest.textContent = `${interest}€`;
+  };
+
+  calcDisplaySummary(retrieveAccount.movements);
+
+  containerApp.style.opacity = 1;
+});
+
+//CREATE USERNAME PROPERTY
+const createUsernames = function (accs) {
+  accs.forEach(function (acc) {
+    //Create a new property for each account
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  });
+};
+
+//adds the username property to each of the account
+createUsernames(accounts);
