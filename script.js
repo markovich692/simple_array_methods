@@ -174,8 +174,9 @@ btnLogin.addEventListener('click', function (event) {
   // console.log(currentAccount);
 
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
-    inputLoginUsername.value = '';
-    inputLoginPin.value = '';
+    inputLoginUsername.value = inputLoginPin.value = '';
+
+    inputLoginPin.blur();
 
     //Display Welcome message
     labelWelcome.textContent = `Welcome back, ${
