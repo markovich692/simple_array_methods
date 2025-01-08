@@ -200,6 +200,18 @@ btnLogin.addEventListener('click', function (event) {
   }
 });
 
+btnTransfer.addEventListener('click', function (event) {
+  event.preventDefault();
+
+  //Find the account that receives the transfer
+
+  const accountTransferUser = accounts.find(
+    acc => acc.username === inputTransferTo.value
+  );
+
+  accountTransferUser?.movements.push(Number(inputTransferAmount.value));
+});
+
 //PROPERTY
 // const userName = user.split(' ');
 // let initial = '';
