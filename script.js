@@ -108,12 +108,13 @@ const displayMovements = function (movement) {
 
 //DISPLAY BALANCE
 
-const calcDisplayBalance = function (movements) {
+const calcDisplayBalance = function (acc) {
   labelBalance.textContent = '';
 
   //calculate the balance
-  const balance = movements.reduce((acc, cur) => acc + cur, 0);
-
+  const balance = acc.movements.reduce((acc, cur) => acc + cur, 0);
+  //Create balance property
+  acc.balance = balance;
   labelBalance.textContent = `${balance}€`;
 };
 
@@ -192,7 +193,7 @@ btnLogin.addEventListener('click', function (event) {
     displayMovements(currentAccount.movements);
 
     //Display balance
-    calcDisplayBalance(currentAccount.movements);
+    calcDisplayBalance(currentAccount);
 
     //Display summary
     // calcDisplaySummary(currentAccount.movements);
@@ -220,7 +221,7 @@ btnTransfer.addEventListener('click', function (event) {
     : undefined;
 
   displayMovements(currentAccount.movements);
-  calcDisplayBalance(currentAccount.movements);
+  calcDisplayBalance(currentAccount);
   calcDisplaySummary(currentAccount);
 });
 
