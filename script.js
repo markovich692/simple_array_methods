@@ -200,16 +200,28 @@ btnLogin.addEventListener('click', function (event) {
   }
 });
 
+//TRANSFER
 btnTransfer.addEventListener('click', function (event) {
   event.preventDefault();
-
+  // inputTransferTo.value = '';
+  // inputTransferAmount.value = '';
   //Find the account that receives the transfer
 
-  const accountTransferUser = accounts.find(
+  const amount = Number(inputTransferAmount.value);
+  const receiverAcc = accounts.find(
     acc => acc.username === inputTransferTo.value
   );
 
-  accountTransferUser?.movements.push(Number(inputTransferAmount.value));
+  //Adds the value to the receiver movements array
+
+  receiverAcc
+    ? receiverAcc.movements.push(amount) &&
+      currentAccount.movements.push(-amount)
+    : undefined;
+
+  displayMovements(currentAccount.movements);
+  calcDisplayBalance(currentAccount.movements);
+  calcDisplaySummary(currentAccount);
 });
 
 //PROPERTY
