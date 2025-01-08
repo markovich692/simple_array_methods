@@ -112,10 +112,8 @@ const calcDisplayBalance = function (acc) {
   labelBalance.textContent = '';
 
   //calculate the balance
-  const balance = acc.movements.reduce((acc, cur) => acc + cur, 0);
-  //Create balance property
-  acc.balance = balance;
-  labelBalance.textContent = `${balance}€`;
+  acc.balance = acc.movements.reduce((acc, cur) => acc + cur, 0);
+  labelBalance.textContent = `${acc.balance}€`;
 };
 
 //DISPLAY SUMMARY
@@ -161,8 +159,22 @@ const createUsernames = function (accs) {
 //adds the username property to each of the account
 createUsernames(accounts);
 
-//LOGIN
+//UPDATE UI
 
+const UpdateUI = function (acc) {
+  //Display movements
+  displayMovements(acc.movements);
+
+  //Display balance
+  calcDisplayBalance(acc);
+
+  //Display summary
+  // calcDisplaySummary(currentAccount.movements);
+  calcDisplaySummary(acc);
+};
+
+//LOGIN
+//Event handler
 let currentAccount;
 
 btnLogin.addEventListener('click', function (event) {
@@ -189,15 +201,8 @@ btnLogin.addEventListener('click', function (event) {
     //Sets the opacity back to 1 when we log in
     containerApp.style.opacity = 1;
 
-    //Display movements
-    displayMovements(currentAccount.movements);
-
-    //Display balance
-    calcDisplayBalance(currentAccount);
-
-    //Display summary
-    // calcDisplaySummary(currentAccount.movements);
-    calcDisplaySummary(currentAccount);
+    //UPDATE UI
+    UpdateUI(currentAccount);
   }
 });
 
@@ -214,15 +219,21 @@ btnTransfer.addEventListener('click', function (event) {
   );
 
   //Adds the value to the receiver movements array
+  console.log(currentAccount.balance);
 
-  receiverAcc
-    ? receiverAcc.movements.push(amount) &&
-      currentAccount.movements.push(-amount)
-    : undefined;
+  //Transfer conditions
+  if (
+    amount > 0 &&
+    receiverAcc &&
+    currentAccount.balance >= amount &&
+    receiverAcc?.username !== currentAccount.username
+  ) {
+    receiverAcc.movements.push(amount);
+    currentAccount.movements.push(-amount);
+  }
 
-  displayMovements(currentAccount.movements);
-  calcDisplayBalance(currentAccount);
-  calcDisplaySummary(currentAccount);
+  //UPDATE UI
+  UpdateUI(currentAccount);
 });
 
 //PROPERTY
