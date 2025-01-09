@@ -239,6 +239,41 @@ btnTransfer.addEventListener('click', function (event) {
   UpdateUI(currentAccount);
 });
 
+//CLOSING
+btnClose.addEventListener('click', function (event) {
+  event.preventDefault();
+
+  const usernameCloseInserted = inputCloseUsername.value;
+  const pinCloseInserted = Number(inputClosePin.value);
+
+  const accountCloseIndex = accounts.findIndex(function (acc) {
+    return acc.username === usernameCloseInserted;
+  });
+
+  // console.log(accountCloseIndex);
+
+  const accountToClose = accounts[accountCloseIndex];
+
+  // console.log(accountToClose);
+
+  console.log(accounts);
+
+  inputCloseUsername.value = '';
+  inputClosePin.value = '';
+
+  if (
+    usernameCloseInserted !== currentAccount.username &&
+    accountToClose &&
+    accountToClose?.pin === pinCloseInserted
+  ) {
+    accounts.splice(accountCloseIndex, 1);
+  }
+
+  // console.log(accounts);
+
+  // UpdateUI(currentAccount);
+});
+
 //PROPERTY
 // const userName = user.split(' ');
 // let initial = '';
@@ -252,12 +287,6 @@ btnTransfer.addEventListener('click', function (event) {
 // LECTURES
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-
-btnClose.addEventListener('click', function (event) {
-  event.preventDefault();
-
-  console.log('deleted');
-});
 
 // const findAccount = accounts.find(account => account.username === 'js');
 // console.log(findAccount);
@@ -590,3 +619,9 @@ btnClose.addEventListener('click', function (event) {
 
 // //adds the username property to each of the account
 // createUsernames(accounts);
+
+const arrTest = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
+
+console.log(arrTest.splice(3));
+
+console.log(arrTest);
