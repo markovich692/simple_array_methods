@@ -686,3 +686,7 @@ console.log(dogs);
 //Finds Sarah's dog and check if it's eating too much or too little
 
 const dogSarah = dogs.find(dog => dog.owners.includes('Sarah'));
+
+dogSarah.curFood > dogSarah.recPortion
+  ? console.log(`Sarah's dog is eating too much.`)
+  : console.log(`Sarah's dog is eating too little.`);
