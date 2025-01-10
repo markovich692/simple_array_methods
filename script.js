@@ -161,7 +161,7 @@ createUsernames(accounts);
 
 //UPDATE UI
 
-const UpdateUI = function (acc) {
+const updateUI = function (acc) {
   //Display movements
   displayMovements(acc.movements);
 
@@ -202,7 +202,7 @@ btnLogin.addEventListener('click', function (event) {
     containerApp.style.opacity = 1;
 
     //UPDATE UI
-    UpdateUI(currentAccount);
+    updateUI(currentAccount);
   }
 });
 
@@ -236,7 +236,7 @@ btnTransfer.addEventListener('click', function (event) {
   }
 
   //UPDATE UI
-  UpdateUI(currentAccount);
+  updateUI(currentAccount);
 });
 
 //CLOSING
@@ -262,6 +262,24 @@ btnClose.addEventListener('click', function (event) {
   inputCloseUsername.value = inputClosePin.value = '';
 });
 
+//REQUEST LOAN
+
+btnLoan.addEventListener('click', function (event) {
+  event.preventDefault();
+
+  const amount = Number(inputLoanAmount.value);
+
+  const loanCondition = currentAccount.movements.some(
+    mov => mov >= amount / 10
+  );
+
+  if (amount > 0 && loanCondition) {
+    currentAccount.movements.push(amount);
+    updateUI(currentAccount);
+  }
+
+  inputLoanAmount.value = '';
+});
 //PROPERTY
 // const userName = user.split(' ');
 // let initial = '';
@@ -624,12 +642,15 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 //
 console.log(movements);
 
-const largeMovements = movements.findLast(mov => mov > 1000);
-const largeMovementsIndex = movements.findLastIndex(
-  mov => Math.abs(mov) > 1000
-);
-console.log(
-  `Your latest large movements of ${largeMovements} occurred ${
-    movements.length - largeMovementsIndex
-  } movements ago.`
-);
+// const largeMovements = movements.findLast(mov => mov > 1000);
+// const largeMovementsIndex = movements.findLastIndex(
+//   mov => Math.abs(mov) > 1000
+// );
+// console.log(
+//   `Your latest large movements of ${largeMovements} occurred ${
+//     movements.length - largeMovementsIndex
+//   } movements ago.`
+// );
+
+// const anyDeposits = movements.some(mov => mov > 0);
+// console.log(anyDeposits);
