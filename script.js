@@ -639,8 +639,7 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // const obj = { a: 1, b: 2 };
 // console.log(Object.keys(obj));
 
-//
-console.log(movements);
+// console.log(movements);
 
 // const largeMovements = movements.findLast(mov => mov > 1000);
 // const largeMovementsIndex = movements.findLastIndex(
@@ -664,8 +663,10 @@ console.log(movements);
 
 // const arrTest = [[1, 2, 3], [4, 5, 6], 7, 8];
 
-const totalMoves = accounts.map(function (account) {
-  return account.movements;
-});
+// const totalMoves = accounts.map(function (account) {
+//   return account.movements;
+// });
 
-console.log(totalMoves.flat());
+// console.log(totalMoves.flat());
+
+//CHALLENGE 4
