@@ -692,9 +692,19 @@ dogSarah.curFood > dogSarah.recPortion
   : console.log(`Sarah's dog is eating too little.`);
 
 //Creates an array of owners, which dogs eat too much
-const arrEatMuch = dogs
+const ownersEatTooMuch = dogs
   .filter(dog => dog.curFood > dog.recPortion)
   .map(much => much.owners)
   .flat();
 
-console.log(arrEatMuch);
+console.log(ownersEatTooMuch);
+
+const ownersEatTooLittle = dogs
+  .filter(dog => dog.curFood < dog.recPortion)
+  .map(little => little.owners)
+  .flat();
+
+console.log(ownersEatTooLittle);
+
+console.log(`${ownersEatTooMuch.join(' and ')}'s dogs eat too much!`);
+console.log(`${ownersEatTooLittle.join(' and ')}'s dogs eat too little!`);
