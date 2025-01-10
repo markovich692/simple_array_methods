@@ -690,3 +690,11 @@ const dogSarah = dogs.find(dog => dog.owners.includes('Sarah'));
 dogSarah.curFood > dogSarah.recPortion
   ? console.log(`Sarah's dog is eating too much.`)
   : console.log(`Sarah's dog is eating too little.`);
+
+//Creates an array of owners, which dogs eat too much
+const arrEatMuch = dogs
+  .filter(dog => dog.curFood > dog.recPortion)
+  .map(much => much.owners)
+  .flat();
+
+console.log(arrEatMuch);
