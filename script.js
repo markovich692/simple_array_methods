@@ -620,3 +620,25 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // const obj = { a: 1, b: 2 };
 // console.log(Object.keys(obj));
+
+const baskets = [
+  { fruit1: 'apple', taste: 'sweet' },
+  { fruit3: 'avocado', taste: 'dry' },
+  { fruit4: 'lemon', taste: 'acid' },
+  { fruit2: 'mango', taste: 'sweet' },
+  { fruit5: 'plum', taste: 'acid' },
+];
+
+const usingFindMethod = baskets.find(fruit => fruit.taste === 'sweet');
+console.log(usingFindMethod);
+
+const usingFindLastMethod = baskets.findLast(fruit => fruit.taste === 'sweet');
+console.log(usingFindLastMethod);
+
+const usingFindIndexMethod = baskets.findIndex(fruit => fruit.taste === 'acid');
+console.log(usingFindIndexMethod);
+
+const usingFindLastIndexMethod = baskets.findLastIndex(
+  fruit => fruit.taste === 'acid'
+);
+console.log(usingFindLastIndexMethod);
