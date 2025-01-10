@@ -678,7 +678,11 @@ const dogs = [
   { weight: 32, curFood: 340, owners: ['Michael'] },
 ];
 
-//Creates the recommended portion property for each dog
+//Adds the recommended portion property to each dog objects
 dogs.forEach(dog => (dog.recPortion = dog.weight ** 0.75 * 28));
 
 console.log(dogs);
+
+//Finds Sarah's dog and check if it's eating too much or too little
+
+const dogSarah = dogs.find(dog => dog.owners.includes('Sarah'));
