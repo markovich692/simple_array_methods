@@ -654,3 +654,18 @@ console.log(movements);
 
 // const anyDeposits = movements.some(mov => mov > 0);
 // console.log(anyDeposits);
+
+// console.log(movements);
+
+// const condition = mov => mov > 0;
+// const onlyDeposit = account4.movements.every(condition);
+
+// console.log(onlyDeposit);
+
+// const arrTest = [[1, 2, 3], [4, 5, 6], 7, 8];
+
+const totalMoves = accounts.map(function (account) {
+  return account.movements;
+});
+
+console.log(totalMoves.flat());
