@@ -709,4 +709,14 @@ console.log(ownersEatTooLittle);
 console.log(`${ownersEatTooMuch.join(' and ')}'s dogs eat too much!`);
 console.log(`${ownersEatTooLittle.join(' and ')}'s dogs eat too little!`);
 
-console.log(dogs.some(dog => dog.curFood === dog.recPortion));
+dogs.some(dog => dog.curFood === dog.recPortion)
+  ? console.log('Some dogs eat exactly the amount of food recommended.')
+  : console.log('None of the dogs eat the amount of food recommended.');
+
+dogs.some(
+  dog =>
+    dog.curFood >= dog.recPortion - dog.recPortion * 0.1 &&
+    dog.curFood <= dog.recPortion + dog.recPortion * 0.1
+)
+  ? console.log('Some dogs eat an okay amount of food.')
+  : console.log('No dogs eat an okay amount of food.');
