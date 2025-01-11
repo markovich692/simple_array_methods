@@ -770,8 +770,19 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // console.log(movementsAscending);
 
-const groupingDepWith = Object.groupBy(movements, mov =>
-  mov > 0 ? 'deposits' : 'withdrawals'
-);
+// const groupingDepWith = Object.groupBy(movements, mov =>
+//   mov > 0 ? 'deposits' : 'withdrawals'
+// );
 
-console.log(groupingDepWith);
+// console.log(groupingDepWith);
+
+const groupedByActivity = Object.groupBy(accounts, function (acc) {
+  const movesLength = acc.movements.length;
+
+  if (movesLength >= 8) return 'very active';
+  if (movesLength >= 5) return 'active';
+  if (movesLength >= 3) return 'moderate';
+  return 'inactive';
+});
+
+console.log(groupedByActivity);
