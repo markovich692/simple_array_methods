@@ -10,6 +10,7 @@ const account1 = {
   movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
   interestRate: 1.2, // %
   pin: 1111,
+  type: 'premium',
 };
 
 const account2 = {
@@ -17,6 +18,7 @@ const account2 = {
   movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
   interestRate: 1.5,
   pin: 2222,
+  type: 'standard',
 };
 
 const account3 = {
@@ -24,6 +26,7 @@ const account3 = {
   movements: [200, -200, 340, -300, -20, 50, 400, -460],
   interestRate: 0.7,
   pin: 3333,
+  type: 'premium',
 };
 
 const account4 = {
@@ -31,6 +34,7 @@ const account4 = {
   movements: [430, 1000, 700, 50, 90],
   interestRate: 1,
   pin: 4444,
+  type: 'premium',
 };
 
 const accounts = [account1, account2, account3, account4];
@@ -776,13 +780,24 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // console.log(groupingDepWith);
 
-const groupedByActivity = Object.groupBy(accounts, function (acc) {
-  const movesLength = acc.movements.length;
+// const groupedByActivity = Object.groupBy(accounts, function (acc) {
+//   const movesLength = acc.movements.length;
 
-  if (movesLength >= 8) return 'very active';
-  if (movesLength >= 5) return 'active';
-  if (movesLength >= 3) return 'moderate';
-  return 'inactive';
+//   if (movesLength >= 8) return 'very active';
+//   if (movesLength >= 5) return 'active';
+//   if (movesLength >= 3) return 'moderate';
+//   return 'inactive';
+// });
+
+// console.log(groupedByActivity);
+
+const groupByType = Object.groupBy(accounts, function (acc) {
+  const accountType = acc.type;
+
+  if (accountType === 'standard') return 'standard';
+  if (accountType === 'premium') return 'premium';
+
+  return 'other';
 });
 
-console.log(groupedByActivity);
+console.log(groupByType);
