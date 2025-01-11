@@ -87,6 +87,8 @@ const inputClosePin = document.querySelector('.form__input--pin');
 const displayMovements = function (movement, sort = false) {
   containerMovements.innerHTML = '';
 
+  console.log(movement);
+
   const movs = sort ? movement.slice().sort((a, b) => a - b) : movement;
 
   movs.forEach(function (mov, index) {
@@ -280,6 +282,14 @@ btnLoan.addEventListener('click', function (event) {
   }
 
   inputLoanAmount.value = '';
+});
+
+//SORTING FUNCTIONALITY
+
+btnSort.addEventListener('click', function (event) {
+  event.preventDefault();
+
+  return displayMovements(currentAccount.movements, true);
 });
 
 //PROPERTY
