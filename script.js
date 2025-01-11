@@ -286,10 +286,13 @@ btnLoan.addEventListener('click', function (event) {
 
 //SORTING FUNCTIONALITY
 
+let sort = false;
+
 btnSort.addEventListener('click', function (event) {
   event.preventDefault();
+  displayMovements(currentAccount.movements, !sort);
 
-  return displayMovements(currentAccount.movements, true);
+  sort = !sort;
 });
 
 //PROPERTY
