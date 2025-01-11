@@ -758,10 +758,20 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 ///////////////////////////////
 //The .sort() method
 
-movements.sort((a, b) => {
-  if (a < b) return -1;
+// movements.sort((a, b) => {
+//   if (a < b) return -1;
 
-  if (b < a) return 1;
-});
+//   if (b < a) return 1;
+// });
 
-console.log(movements);
+// console.log(movements);
+
+// const movementsAscending = movements.sort((a, b) => a - b);
+
+// console.log(movementsAscending);
+
+const groupingDepWith = Object.groupBy(movements, mov =>
+  mov > 0 ? 'deposits' : 'withdrawals'
+);
+
+console.log(groupingDepWith);
