@@ -720,3 +720,11 @@ dogs.some(
 )
   ? console.log('Some dogs eat an okay amount of food.')
   : console.log('No dogs eat an okay amount of food.');
+
+const arrEatOkay = dogs.filter(
+  dog =>
+    dog.curFood >= dog.recPortion - dog.recPortion * 0.1 &&
+    dog.curFood <= dog.recPortion + dog.recPortion * 0.1
+);
+
+console.log(arrEatOkay);
