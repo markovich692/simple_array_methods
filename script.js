@@ -691,73 +691,73 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 ///////////////////////////////
 //CHALLENGE 4
 
-// const dogs = [
-//   { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
-//   { weight: 8, curFood: 200, owners: ['Matilda'] },
-//   { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
-//   { weight: 32, curFood: 340, owners: ['Michael'] },
-// ];
+const dogs = [
+  { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+  { weight: 8, curFood: 200, owners: ['Matilda'] },
+  { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+  { weight: 32, curFood: 340, owners: ['Michael'] },
+];
 
-// //Adds the recommended portion property to each dog objects
-// dogs.forEach(dog => (dog.recPortion = dog.weight ** 0.75 * 28));
+//Adds the recommended portion property to each dog objects
+dogs.forEach(dog => (dog.recPortion = dog.weight ** 0.75 * 28));
 
-// console.log(dogs);
+console.log(dogs);
 
-// //Finds Sarah's dog and check if it's eating too much or too little
+//Finds Sarah's dog and check if it's eating too much or too little
 
-// const dogSarah = dogs.find(dog => dog.owners.includes('Sarah'));
+const dogSarah = dogs.find(dog => dog.owners.includes('Sarah'));
 
-// dogSarah.curFood > dogSarah.recPortion
-//   ? console.log(`Sarah's dog is eating too much.`)
-//   : console.log(`Sarah's dog is eating too little.`);
+dogSarah.curFood > dogSarah.recPortion
+  ? console.log(`Sarah's dog is eating too much.`)
+  : console.log(`Sarah's dog is eating too little.`);
 
-// //Creates an array of owners, which dogs eat too much
-// const ownersEatTooMuch = dogs
-//   .filter(dog => dog.curFood > dog.recPortion)
-//   .map(much => much.owners)
-//   .flat();
+//Creates an array of owners, which dogs eat too much
+const ownersEatTooMuch = dogs
+  .filter(dog => dog.curFood > dog.recPortion)
+  .map(much => much.owners)
+  .flat();
 
-// console.log(ownersEatTooMuch);
+console.log(ownersEatTooMuch);
 
-// const ownersEatTooLittle = dogs
-//   .filter(dog => dog.curFood < dog.recPortion)
-//   .map(little => little.owners)
-//   .flat();
+const ownersEatTooLittle = dogs
+  .filter(dog => dog.curFood < dog.recPortion)
+  .map(little => little.owners)
+  .flat();
 
-// console.log(ownersEatTooLittle);
+console.log(ownersEatTooLittle);
 
-// console.log(`${ownersEatTooMuch.join(' and ')}'s dogs eat too much!`);
-// console.log(`${ownersEatTooLittle.join(' and ')}'s dogs eat too little!`);
+console.log(`${ownersEatTooMuch.join(' and ')}'s dogs eat too much!`);
+console.log(`${ownersEatTooLittle.join(' and ')}'s dogs eat too little!`);
 
-// dogs.some(dog => dog.curFood === dog.recPortion)
-//   ? console.log('Some dogs eat exactly the amount of food recommended.')
-//   : console.log('None of the dogs eat the amount of food recommended.');
+dogs.some(dog => dog.curFood === dog.recPortion)
+  ? console.log('Some dogs eat exactly the amount of food recommended.')
+  : console.log('None of the dogs eat the amount of food recommended.');
 
-// dogs.some(
-//   dog =>
-//     (dog.curFood >= dog.recPortion &&
-//       dog.curFood <= dog.recPortion + dog.recPortion * 0.1) ||
-//     (dog.curFood <= dog.recPortion &&
-//       dog.curFood >= dog.recPortion - dog.recPortion * 1)
-// )
-//   ? console.log('Some dogs eat an okay amount of food.')
-//   : console.log('No dogs eat an okay amount of food.');
+dogs.some(
+  dog =>
+    (dog.curFood >= dog.recPortion &&
+      dog.curFood <= dog.recPortion + dog.recPortion * 0.1) ||
+    (dog.curFood <= dog.recPortion &&
+      dog.curFood >= dog.recPortion - dog.recPortion * 1)
+)
+  ? console.log('Some dogs eat an okay amount of food.')
+  : console.log('No dogs eat an okay amount of food.');
 
-// const arrEatOkay = dogs.filter(
-//   dog =>
-//     (dog.curFood >= dog.recPortion &&
-//       dog.curFood <= dog.recPortion + dog.recPortion * 0.1) ||
-//     (dog.curFood <= dog.recPortion &&
-//       dog.curFood >= dog.recPortion - dog.recPortion * 1)
-// );
+const arrEatOkay = dogs.filter(
+  dog =>
+    (dog.curFood >= dog.recPortion &&
+      dog.curFood <= dog.recPortion + dog.recPortion * 0.1) ||
+    (dog.curFood <= dog.recPortion &&
+      dog.curFood >= dog.recPortion - dog.recPortion * 1)
+);
 
-// console.log(arrEatOkay);
+console.log(arrEatOkay);
 
-// //Create a shallow copy of the dogs array
+//Create a shallow copy of the dogs array
 
-// console.log(dogs);
+console.log(dogs);
 
-// dogs.map((dog, index) => console.log(dog.curFood, index));
+const dogsShallowCopy = dogs.slice();
 
 ///////////////////////////////
 //The .sort() method
@@ -791,13 +791,36 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // console.log(groupedByActivity);
 
-const groupByType = Object.groupBy(accounts, function (acc) {
-  const accountType = acc.type;
+// const groupByType = Object.groupBy(accounts, function (acc) {
+//   const accountType = acc.type;
 
-  if (accountType === 'standard') return 'standard';
-  if (accountType === 'premium') return 'premium';
+//   if (accountType === 'standard') return 'standard';
+//   if (accountType === 'premium') return 'premium';
 
-  return 'other';
-});
+//   return 'other';
+// });
 
-console.log(groupByType);
+// console.log(groupByType);
+
+// const staff = [
+//   { name: 'Ellie', age: 28 },
+//   { name: 'Bob', age: 30 },
+//   { name: 'Henry', age: 28 },
+//   { name: 'David', age: 30 },
+// ];
+
+// //Using the Object.groupBy() to group the staff by age
+// const groupedByAge = Object.groupBy(staff, member => member.age);
+
+// console.log(groupedByAge);
+
+// // output : {
+// //   28: [
+// //     { name: 'Ellie', age: 28 },
+// //     { name: 'Henry', age: 28 },
+// //   ],
+// //   30: [
+// //     { name: 'Bob', age: 30 },
+// //     { name: 'David', age: 30 },
+// //   ],
+// // };
