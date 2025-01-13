@@ -917,6 +917,15 @@ const breeds = [
   },
 ];
 
+//Store the average weight of the husky in the husky weight variable
 const huskyWeight = breeds.find(dog => dog.breed === 'Husky').averageWeight;
+console.log(huskyWeight);
 
-console.log(huskyBreed);
+//The name of the breed that likes both "running" and "fetch"
+const dogBothActivities = breeds.find(function (dog) {
+  const dogActivities = dog.activities;
+
+  return dogActivities.includes('running') && dogActivities.includes('fetch');
+});
+
+console.log(dogBothActivities);
