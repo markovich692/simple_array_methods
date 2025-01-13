@@ -880,7 +880,8 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // 6. Do all the breeds have an average weight of 10kg or more? Log to the console whether "true" or "false".
 // 7. Are there any breeds that are "active"? "Active" means that the dog has 3 or more activities.
 //    Log to the console whether "true" or "false".
-// BONUS: What's the average weight of the heaviest breed that likes to fetch? HINT: Use the "Math.max" method along with the ... operator.
+// BONUS: What's the average weight of the heaviest breed that likes to fetch? HINT: Use the "Math.max" method
+// along with the ... operator.
 
 const breeds = [
   {
@@ -962,3 +963,16 @@ breeds.every(dog => dog.averageWeight >= 10)
 breeds.some(dog => dog.activities.length >= 3)
   ? console.log('Active')
   : console.log('Not active');
+
+//Find the averageWeight of the heaviest breed that likes to fetch
+
+breeds.find(dog => dog.averageWeight);
+
+const breedsFetchHeaviest = breeds
+  .filter(function (cur, index, arr) {
+    return cur.activities.includes('fetch');
+  })
+  .sort((a, b) => a.averageWeight - b.averageWeight)
+  .at(-1).averageWeight;
+
+console.log(breedsFetchHeaviest);
