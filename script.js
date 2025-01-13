@@ -946,3 +946,7 @@ console.log(uniqueActivities);
 const swimmingIndex = uniqueActivities.findIndex(function (cur, i, arr) {
   return cur === 'swimming';
 });
+
+const swimmingAdjacent = uniqueActivities.splice(swimmingIndex, 1);
+
+console.log(swimmingAdjacent);
