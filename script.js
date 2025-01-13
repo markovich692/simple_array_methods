@@ -929,3 +929,7 @@ const dogBothActivities = breeds.find(function (dog) {
 });
 
 console.log(dogBothActivities);
+
+const allActivities = breeds.flatMap(dog => dog.activities);
+
+console.log(allActivities);
