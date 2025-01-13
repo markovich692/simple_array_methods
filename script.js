@@ -317,7 +317,9 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 console.log(accounts);
 
-const totalDeposits = accounts.flatMap(acc => acc.movements);
+const totalDeposits = accounts
+  .flatMap(acc => acc.movements)
+  .filter(mov => mov > 0);
 
 console.log(totalDeposits);
 
