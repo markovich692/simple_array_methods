@@ -950,3 +950,8 @@ const swimmingIndex = uniqueActivities.findIndex(function (cur, i, arr) {
 const swimmingAdjacent = uniqueActivities.toSpliced(swimmingIndex, 1);
 
 console.log(swimmingAdjacent);
+
+//Check if all the breeds have an average weight of 10Kg or more
+breeds.every(dog => dog.averageWeight >= 10)
+  ? console.log('All the breeds have an average weight greater than 10 or more')
+  : console.log('All the breeds have an average weight lower than 10');
