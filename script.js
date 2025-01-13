@@ -313,6 +313,14 @@ btnSort.addEventListener('click', function (event) {
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
+//Check how much have been deposited in total accross the bank
+
+console.log(accounts);
+
+const totalDeposits = accounts.flatMap(acc => acc.movements);
+
+console.log(totalDeposits);
+
 // const findAccount = accounts.find(account => account.username === 'js');
 // console.log(findAccount);
 
@@ -883,96 +891,96 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // BONUS: What's the average weight of the heaviest breed that likes to fetch? HINT: Use the "Math.max" method
 // along with the ... operator.
 
-const breeds = [
-  {
-    breed: 'German Shepherd',
-    averageWeight: 32,
-    activities: ['fetch', 'swimming'],
-  },
-  {
-    breed: 'Dalmatian',
-    averageWeight: 24,
-    activities: ['running', 'fetch', 'agility'],
-  },
-  {
-    breed: 'Labrador',
-    averageWeight: 28,
-    activities: ['swimming', 'fetch'],
-  },
-  {
-    breed: 'Beagle',
-    averageWeight: 12,
-    activities: ['digging', 'fetch'],
-  },
-  {
-    breed: 'Husky',
-    averageWeight: 26,
-    activities: ['running', 'agility', 'swimming'],
-  },
-  {
-    breed: 'Bulldog',
-    averageWeight: 36,
-    activities: ['sleeping'],
-  },
-  {
-    breed: 'Poodle',
-    averageWeight: 18,
-    activities: ['agility', 'fetch'],
-  },
-];
+// const breeds = [
+//   {
+//     breed: 'German Shepherd',
+//     averageWeight: 32,
+//     activities: ['fetch', 'swimming'],
+//   },
+//   {
+//     breed: 'Dalmatian',
+//     averageWeight: 24,
+//     activities: ['running', 'fetch', 'agility'],
+//   },
+//   {
+//     breed: 'Labrador',
+//     averageWeight: 28,
+//     activities: ['swimming', 'fetch'],
+//   },
+//   {
+//     breed: 'Beagle',
+//     averageWeight: 12,
+//     activities: ['digging', 'fetch'],
+//   },
+//   {
+//     breed: 'Husky',
+//     averageWeight: 26,
+//     activities: ['running', 'agility', 'swimming'],
+//   },
+//   {
+//     breed: 'Bulldog',
+//     averageWeight: 36,
+//     activities: ['sleeping'],
+//   },
+//   {
+//     breed: 'Poodle',
+//     averageWeight: 18,
+//     activities: ['agility', 'fetch'],
+//   },
+// ];
 
-//Store the average weight of the husky in the husky weight variable
-const huskyWeight = breeds.find(dog => dog.breed === 'Husky').averageWeight;
-console.log(huskyWeight);
+// //Store the average weight of the husky in the husky weight variable
+// const huskyWeight = breeds.find(dog => dog.breed === 'Husky').averageWeight;
+// console.log(huskyWeight);
 
-//The name of the breed that likes both "running" and "fetch"
-const dogBothActivities = breeds.find(function (dog) {
-  const dogActivities = dog.activities;
+// //The name of the breed that likes both "running" and "fetch"
+// const dogBothActivities = breeds.find(function (dog) {
+//   const dogActivities = dog.activities;
 
-  return dogActivities.includes('running') && dogActivities.includes('fetch');
-});
+//   return dogActivities.includes('running') && dogActivities.includes('fetch');
+// });
 
-console.log(dogBothActivities);
+// console.log(dogBothActivities);
 
-//Create an array of all activities of all the dog breeds
-const allActivities = breeds.flatMap(dog => dog.activities);
+// //Create an array of all activities of all the dog breeds
+// const allActivities = breeds.flatMap(dog => dog.activities);
 
-console.log(allActivities);
+// console.log(allActivities);
 
-//Create an array containing the unique activities of the dog breed
-const uniqueActivities = [...new Set(allActivities)];
+// //Create an array containing the unique activities of the dog breed
+// const uniqueActivities = [...new Set(allActivities)];
 
-console.log(uniqueActivities);
+// console.log(uniqueActivities);
 
-// Store other activities in an array called "swimmingAdjacent"
-const swimmingIndex = uniqueActivities.findIndex(function (cur, i, arr) {
-  return cur === 'swimming';
-});
+// // Store other activities in an array called "swimmingAdjacent"
+// const swimmingIndex = uniqueActivities.findIndex(function (cur, i, arr) {
+//   return cur === 'swimming';
+// });
 
-const swimmingAdjacent = uniqueActivities.toSpliced(swimmingIndex, 1);
+// const swimmingAdjacent = uniqueActivities.toSpliced(swimmingIndex, 1);
 
-console.log(swimmingAdjacent);
+// console.log(swimmingAdjacent);
 
-//Check if all the breeds have an average weight of 10Kg or more
-breeds.every(dog => dog.averageWeight >= 10)
-  ? console.log('All the breeds have an average weight greater than 10 or more')
-  : console.log('All the breeds have an average weight lower than 10');
+// //Check if all the breeds have an average weight of 10Kg or more
+// breeds.every(dog => dog.averageWeight >= 10)
+//   ? console.log('All the breeds have an average weight greater than 10 or more')
+//   : console.log('All the breeds have an average weight lower than 10');
 
-//Check if any of the breeds are 'Active' that is if they have more than 3 activities
+// //Check if any of the breeds are 'Active' that is if they have more than 3 activities
 
-breeds.some(dog => dog.activities.length >= 3)
-  ? console.log('Active')
-  : console.log('Not active');
+// breeds.some(dog => dog.activities.length >= 3)
+//   ? console.log('Active')
+//   : console.log('Not active');
 
-//Find the averageWeight of the heaviest breed that likes to fetch
+// //Find the averageWeight of the heaviest breed that likes to fetch
 
-breeds.find(dog => dog.averageWeight);
+// breeds.find(dog => dog.averageWeight);
 
-const breedsFetchHeaviest = breeds
-  .filter(function (cur, index, arr) {
-    return cur.activities.includes('fetch');
-  })
-  .sort((a, b) => a.averageWeight - b.averageWeight)
-  .at(-1).averageWeight;
+// const breedsFetchHeaviest = breeds
+//   .filter(function (cur, index, arr) {
+//     return cur.activities.includes('fetch');
+//   })
+//   .sort((a, b) => a.averageWeight - b.averageWeight)
+//   .at(-1).averageWeight;
 
-console.log(breedsFetchHeaviest);
+// console.log(breedsFetchHeaviest);
