@@ -321,8 +321,7 @@ const totalDeposits = accounts
   .flatMap(acc => acc.movements)
   .filter(mov => mov > 0)
   .reduce((acc, cur) => acc + cur, 0);
-
-console.log(totalDeposits);
+// console.log(totalDeposits);
 
 //2-How many deposits they have been in the bank with at least one 1000
 // const totalDepositsOfthousand = accounts
@@ -339,7 +338,12 @@ const totalDepositsOfthousand = accounts
     }
   }, 0);
 
-console.log(totalDepositsOfthousand);
+// console.log(totalDepositsOfthousand);
+
+//3-Create an object that contains the sum of the deposits and the withdrawals
+const objectSumDepWith = accounts.flatMap(acc => acc.movements);
+
+console.log(objectSumDepWith);
 
 // const findAccount = accounts.find(account => account.username === 'js');
 // console.log(findAccount);
