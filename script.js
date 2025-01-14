@@ -341,9 +341,19 @@ const totalDepositsOfthousand = accounts
 // console.log(totalDepositsOfthousand);
 
 //3-Create an object that contains the sum of the deposits and the withdrawals
-const objectSumDepWith = accounts.flatMap(acc => acc.movements);
 
-console.log(objectSumDepWith);
+const sums = accounts
+  .flatMap((cur, i, arr) => cur.movements)
+  .reduce(
+    function (acc, cur, arr) {
+      cur > 0 ? (acc.deposits += cur) : (acc.withdrawals += cur);
+
+      return acc;
+    },
+    { deposits: 0, withdrawals: 0 }
+  );
+
+console.log(sums);
 
 // const findAccount = accounts.find(account => account.username === 'js');
 // console.log(findAccount);
