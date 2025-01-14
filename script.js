@@ -325,9 +325,19 @@ const totalDeposits = accounts
 console.log(totalDeposits);
 
 //2-How many deposits they have been in the bank with at least one 1000
+// const totalDepositsOfthousand = accounts
+//   .flatMap(acc => acc.movements)
+//   .filter(mov => mov >= 1000).length;
+
 const totalDepositsOfthousand = accounts
   .flatMap(acc => acc.movements)
-  .filter(mov => mov >= 1000).length;
+  .reduce(function (acc, cur) {
+    if (cur >= 1000) {
+      return acc + 1;
+    } else {
+      return acc;
+    }
+  }, 0);
 
 console.log(totalDepositsOfthousand);
 
