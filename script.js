@@ -346,7 +346,9 @@ const sums = accounts
   .flatMap((cur, i, arr) => cur.movements)
   .reduce(
     function (acc, cur, arr) {
-      cur > 0 ? (acc.deposits += cur) : (acc.withdrawals += cur);
+      // cur > 0 ? (acc.deposits += cur) : (acc.withdrawals += cur);
+
+      acc[cur > 0 ? 'deposits' : 'withdrawals'] += cur;
 
       return acc;
     },
@@ -354,6 +356,24 @@ const sums = accounts
   );
 
 console.log(sums);
+
+//Converts any strings into a title case
+
+const titleCased = function (str) {
+  // const arrUpper = str
+  //   .split(' ')
+  //   .map(cur => `${cur.at(0).toUpperCase()}${cur.slice(1)}`);
+
+  const stringLower = str.toLowerCase();
+
+  const arrUpperCaseFirst = stringLower.split(' ').map(function (cur) {
+    return cur === 'a' ? `${cur}` : `${cur.at(0).toUpperCase()}${cur.slice(1)}`;
+  });
+
+  return arrUpperCaseFirst.join(' ');
+};
+
+console.log(titleCased('I love a happy meal'));
 
 // const findAccount = accounts.find(account => account.username === 'js');
 // console.log(findAccount);
@@ -1018,3 +1038,12 @@ console.log(sums);
 //   .at(-1).averageWeight;
 
 // console.log(breedsFetchHeaviest);
+
+// const obj = { a: 1, b: 2, c: 3 };
+
+// const objEntry = Object.entries(obj);
+
+// for (const entry of objEntry) {
+//   const [key, value] = entry;
+//   console.log(key, value);
+// }
