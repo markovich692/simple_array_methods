@@ -295,7 +295,6 @@ let sort = false;
 btnSort.addEventListener('click', function (event) {
   event.preventDefault();
   displayMovements(currentAccount.movements, !sort);
-
   sort = !sort;
 });
 
@@ -315,6 +314,7 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 //Check how much have been deposited in total accross the bank
 
+//1
 console.log(accounts);
 
 const totalDeposits = accounts
@@ -323,6 +323,13 @@ const totalDeposits = accounts
   .reduce((acc, cur) => acc + cur, 0);
 
 console.log(totalDeposits);
+
+//2-How many deposits they have been in the bank with at least one 1000
+const totalDepositsOfthousand = accounts
+  .flatMap(acc => acc.movements)
+  .filter(mov => mov >= 1000).length;
+
+console.log(totalDepositsOfthousand);
 
 // const findAccount = accounts.find(account => account.username === 'js');
 // console.log(findAccount);
